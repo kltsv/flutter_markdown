@@ -400,11 +400,7 @@ class MarkdownBuilder implements md.NodeVisitor {
       final _InlineElement current = _inlines.removeLast();
       final _InlineElement parent = _inlines.last;
 
-      if (builders.containsKey(tag)) {
-        final Widget? child =
-            builders[tag]!.visitElementAfter(element, styleSheet.styles[tag]);
-        if (child != null) current.children[0] = child;
-      } else if (tag == 'img') {
+      if (tag == 'img') {
         // create an image widget for this image
         current.children.add(_buildImage(
           element.attributes['src']!,
@@ -440,6 +436,13 @@ class MarkdownBuilder implements md.NodeVisitor {
         _tables.single.rows.last.children!.add(child);
       } else if (tag == 'a') {
         _linkHandlers.removeLast();
+      }
+
+      if (builders.containsKey(tag) && current.children.isNotEmpty) {
+        final wrapped = builders[tag]!.wrap(current.children.first);
+        if (wrapped != null) {
+          current.children[0] = wrapped;
+        }
       }
 
       if (current.children.isNotEmpty) {

@@ -1,3 +1,7 @@
+## 0.6.0-wrap
+
+ * Ability to wrap text widgets
+
 ## 0.6.0
 
  * Null safety release
