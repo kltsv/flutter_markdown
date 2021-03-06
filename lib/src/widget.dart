@@ -64,7 +64,7 @@ abstract class MarkdownElementBuilder {
   Widget? visitElementAfter(md.Element element, TextStyle? preferredStyle) =>
       null;
 
-  Widget? wrap(Widget child) => null;
+  List<Widget>? wrap(List<Widget> children) => null;
 }
 
 /// Enum to specify which theme being used when creating [MarkdownStyleSheet]

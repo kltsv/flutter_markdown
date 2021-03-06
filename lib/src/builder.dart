@@ -439,9 +439,10 @@ class MarkdownBuilder implements md.NodeVisitor {
       }
 
       if (builders.containsKey(tag) && current.children.isNotEmpty) {
-        final wrapped = builders[tag]!.wrap(current.children.first);
+        final wrapped = builders[tag]!.wrap(current.children);
         if (wrapped != null) {
-          current.children[0] = wrapped;
+          current.children.clear();
+          current.children.addAll(wrapped);
         }
       }
 

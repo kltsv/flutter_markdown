@@ -1,3 +1,7 @@
+## 0.6.0-wrap.1
+
+  * Apply widget wrap for all children
+
 ## 0.6.0-wrap
 
  * Ability to wrap text widgets
